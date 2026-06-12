@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Launch Kit — Project Reference</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --navy:    #082f49;
+  --teal:    #308c83;
+  --mint:    #01ffe1;
+  --purple:  #39426f;
+  --seafoam: #c1ddd8;
+  --charcoal:#4c5454;
+  --lgray:   #d8dbe2;
+  --mist:    #dde1ea;
+  --white:   #ffffff;
+  --slide:   #f0f8fb;
+  --amber:   #BA7517;
+  --amber-bg:#FAEEDA;
+  --coral:   #993C1D;
+  --coral-bg:#FAECE7;
+  --blue:    #185FA5;
+  --blue-bg: #E6F1FB;
+  --green:   #3B6D11;
+  --green-bg:#EAF3DE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Montserrat', sans-serif; background: var(--slide); color: var(--charcoal); font-size: 14px; line-height: 1.7; }
+
+a { color: var(--teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Header ── */
+header {
+  background: var(--navy);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='32' viewBox='0 0 28 32'><polygon points='14,2 26,9 26,23 14,30 2,23 2,9' fill='none' stroke='%23308c83' stroke-opacity='0.10' stroke-width='1'/></svg>");
+  padding: 36px 40px 32px;
+  position: relative;
+}
+header::after { content:''; display:block; height:2px; background:var(--mint); position:absolute; bottom:0; left:0; right:0; }
+.header-inner { max-width:1060px; margin:0 auto; }
+.header-eyebrow { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--mint); margin-bottom:10px; }
+header h1 { font-family: Georgia, 'Playfair Display', serif; font-size:32px; font-weight:700; color:var(--white); line-height:1.2; margin-bottom:10px; }
+header p { font-size:14px; color:var(--seafoam); max-width:620px; line-height:1.6; margin-bottom:16px; }
+.header-pills { display:flex; gap:8px; flex-wrap:wrap; }
+.pill { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:4px 12px; border-radius:999px; }
+.pill-mint { background:transparent; border:1px solid var(--mint); color:var(--mint); }
+.pill-teal { background:transparent; border:1px solid var(--teal); color:var(--seafoam); }
+
+/* ── Nav ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--mist);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner { max-width:1060px; margin:0 auto; padding:0 40px; display:flex; gap:0; overflow-x:auto; }
+.nav-inner a { display:block; padding:12px 16px; font-size:12px; font-weight:600; color:var(--charcoal); white-space:nowrap; border-bottom:2px solid transparent; transition:color .15s, border-color .15s; }
+.nav-inner a:hover { color:var(--teal); text-decoration:none; border-bottom-color:var(--teal); }
+
+/* ── Layout ── */
+.page { max-width:1060px; margin:0 auto; padding:48px 40px 80px; }
+
+/* ── Sections ── */
+section { margin-bottom:56px; }
+.section-eyebrow { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin-bottom:8px; }
+section > h2 { font-family: Georgia, serif; font-size:22px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.section-intro { font-size:14px; color:var(--charcoal); max-width:720px; margin-bottom:28px; line-height:1.7; }
+
+/* ── Cards ── */
+.card { background:var(--white); border-radius:10px; border:1px solid var(--mist); box-shadow:0 0 0 1px rgba(48,140,131,.1), 0 2px 12px rgba(0,0,0,.04); padding:24px 28px; }
+.card + .card { margin-top:16px; }
+.card h3 { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.card p { font-size:13px; color:var(--charcoal); line-height:1.6; }
+
+/* ── What is this ── */
+.what-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+.what-card { background:var(--white); border-radius:10px; border:1px solid var(--mist); padding:20px 22px; }
+.what-card .icon { font-size:22px; margin-bottom:10px; }
+.what-card h3 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.what-card p { font-size:12px; color:var(--charcoal); line-height:1.6; }
+
+/* ── Mode cards ── */
+.mode-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.mode-card { border-radius:10px; padding:22px 24px; }
+.mode-card.full { background:var(--navy); border:1px solid rgba(1,255,225,.2); }
+.mode-card.full h3 { color:var(--white); font-size:14px; font-weight:700; margin-bottom:8px; }
+.mode-card.full p { color:var(--seafoam); font-size:12px; line-height:1.6; }
+.mode-card.full ol { color:var(--seafoam); font-size:12px; padding-left:18px; line-height:1.9; }
+.mode-card.carte { background:var(--white); border:1px solid var(--teal); box-shadow:0 0 0 1px rgba(48,140,131,.15); }
+.mode-card.carte h3 { color:var(--navy); font-size:14px; font-weight:700; margin-bottom:8px; }
+.mode-card.carte p { color:var(--charcoal); font-size:12px; line-height:1.6; }
+.mode-card.carte ul { color:var(--charcoal); font-size:12px; padding-left:18px; line-height:1.9; }
+.mode-label { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:3px 8px; border-radius:999px; margin-bottom:10px; }
+.label-full { background:rgba(1,255,225,.15); color:var(--mint); border:1px solid rgba(1,255,225,.3); }
+.label-carte { background:rgba(48,140,131,.1); color:var(--teal); border:1px solid rgba(48,140,131,.3); }
+
+/* ── File inventory ── */
+.file-group { margin-bottom:28px; }
+.file-group-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--mist); }
+.file-group-header h3 { font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--charcoal); }
+.file-count { font-size:10px; font-weight:600; padding:2px 8px; border-radius:999px; }
+
+.file-table { width:100%; border-collapse:collapse; }
+.file-table tr { border-bottom:1px solid var(--mist); }
+.file-table tr:last-child { border-bottom:none; }
+.file-table td { padding:10px 12px 10px 0; vertical-align:top; }
+.file-table td:first-child { width:220px; padding-right:16px; }
+.file-table td:nth-child(2) { width:100px; }
+.fname { font-family: 'Courier New', monospace; font-size:12px; font-weight:600; color:var(--navy); }
+.fname.generated { color:var(--amber); }
+.fname.html-ref { color:var(--purple); }
+.fdesc { font-size:12px; color:var(--charcoal); line-height:1.6; }
+
+.badge { display:inline-block; font-size:10px; font-weight:600; padding:2px 9px; border-radius:999px; border:1px solid; white-space:nowrap; }
+.b-orch    { background:#EEEDFE; color:#3C3489; border-color:#AFA9EC; }
+.b-found   { background:#E1F5EE; color:#085041; border-color:#5DCAA5; }
+.b-core    { background:#E1F5EE; color:#085041; border-color:#5DCAA5; }
+.b-res     { background:#FAECE7; color:#712B13; border-color:#F0997B; }
+.b-gtm     { background:#E6F1FB; color:#0C447C; border-color:#85B7EB; }
+.b-log     { background:#FAEEDA; color:#633806; border-color:#EF9F27; }
+.b-meta    { background:#F1EFE8; color:#444441; border-color:#B4B2A9; }
+
+/* ── Phase flow ── */
+.phase-flow { display:flex; flex-direction:column; gap:0; }
+.phase-row { display:flex; align-items:stretch; gap:0; }
+.phase-connector { display:flex; flex-direction:column; align-items:center; width:32px; flex-shrink:0; }
+.phase-connector .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:22px; }
+.phase-connector .line { width:2px; flex:1; min-height:16px; }
+.phase-body { flex:1; padding:0 0 20px 16px; }
+.phase-node { border-radius:8px; padding:14px 18px; margin-bottom:0; }
+.phase-node h4 { font-size:13px; font-weight:700; margin-bottom:3px; }
+.phase-node p { font-size:12px; line-height:1.5; }
+.phase-node .outputs { font-size:11px; margin-top:6px; opacity:.8; font-style:italic; }
+.phase-pause { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:4px; display:inline-block; margin:6px 0 0 0; }
+
+/* phase colors */
+.ph-orch   { background:rgba(57,66,111,.08);  border:1px solid rgba(57,66,111,.2);  }
+.ph-orch h4 { color:var(--purple); }
+.ph-teal   { background:rgba(48,140,131,.07); border:1px solid rgba(48,140,131,.2); }
+.ph-teal h4 { color:var(--teal); }
+.ph-res    { background:rgba(153,60,29,.06);  border:1px solid rgba(153,60,29,.2);  }
+.ph-res h4 { color:var(--coral); }
+.ph-gtm    { background:rgba(24,95,165,.06);  border:1px solid rgba(24,95,165,.2);  }
+.ph-gtm h4 { color:var(--blue); }
+.ph-pause  { background:rgba(186,117,23,.1); color:var(--amber); border:1px solid rgba(186,117,23,.3); }
+.ph-opt    { background:rgba(153,60,29,.05);  border:1px dashed rgba(153,60,29,.3); }
+.ph-opt h4 { color:var(--coral); }
+
+.dot-orch   { background:var(--purple); }
+.dot-teal   { background:var(--teal); }
+.dot-res    { background:var(--coral); }
+.dot-gtm    { background:var(--blue); }
+.dot-pause  { background:var(--amber); }
+.line-orch  { background:rgba(57,66,111,.25); }
+.line-teal  { background:rgba(48,140,131,.25); }
+.line-res   { background:rgba(153,60,29,.2); }
+.line-gtm   { background:rgba(24,95,165,.2); }
+.line-pause { background:rgba(186,117,23,.2); }
+
+/* ── Parallel block ── */
+.parallel-block { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px; }
+.parallel-note { font-size:11px; color:var(--charcoal); font-style:italic; margin-bottom:8px; opacity:.7; }
+
+/* ── Key concepts ── */
+.concept-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
+.concept-card { background:var(--white); border-radius:10px; border:1px solid var(--mist); padding:20px 22px; }
+.concept-card .concept-badge { font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:3px 9px; border-radius:999px; display:inline-block; margin-bottom:10px; }
+.concept-card h3 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.concept-card p { font-size:12px; color:var(--charcoal); line-height:1.6; }
+.concept-card ul { font-size:12px; color:var(--charcoal); line-height:1.8; padding-left:16px; margin-top:6px; }
+
+/* ── Getting started ── */
+.steps { counter-reset:step; display:flex; flex-direction:column; gap:0; }
+.step { display:flex; gap:20px; align-items:flex-start; padding-bottom:24px; position:relative; }
+.step:not(:last-child)::after { content:''; position:absolute; left:19px; top:42px; bottom:0; width:2px; background:var(--mist); }
+.step-num { width:40px; height:40px; border-radius:50%; background:var(--navy); color:var(--white); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1; }
+.step-body h3 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:4px; padding-top:8px; }
+.step-body p { font-size:13px; color:var(--charcoal); line-height:1.6; }
+.step-body code { font-family:'Courier New', monospace; font-size:12px; background:var(--slide); border:1px solid var(--mist); padding:2px 6px; border-radius:4px; color:var(--navy); }
+
+/* ── Callouts ── */
+.callout { padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0; font-size:13px; line-height:1.6; }
+.callout-teal { background:rgba(48,140,131,.07); border-left:3px solid var(--teal); color:var(--charcoal); }
+.callout-amber { background:var(--amber-bg); border-left:3px solid var(--amber); color:var(--charcoal); }
+.callout strong { color:var(--navy); }
+
+/* ── Count bar ── */
+.count-bar { display:flex; flex-wrap:wrap; gap:8px 20px; padding:16px 20px; background:var(--white); border-radius:8px; border:1px solid var(--mist); margin-top:24px; }
+.count-item { font-size:12px; color:var(--charcoal); }
+.count-item strong { color:var(--navy); font-weight:700; }
+
+/* ── Footer ── */
+footer { background:var(--navy); padding:20px 40px; position:relative; }
+footer::before { content:''; display:block; height:2px; background:var(--mint); position:absolute; top:0; left:0; right:0; }
+.footer-inner { max-width:1060px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+footer p { font-size:11px; color:var(--seafoam); }
+
+@media (max-width: 680px) {
+  .mode-grid { grid-template-columns:1fr; }
+  .parallel-block { grid-template-columns:1fr; }
+  .page { padding:32px 20px 60px; }
+  header { padding:28px 20px 24px; }
+  nav .nav-inner { padding:0 20px; }
+  footer { padding:16px 20px; }
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">2DAU7XKFUY5M-1628067230-8613</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">d702bcb7-5c74-4c6d-8024-0d4c4e2418b7</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://entegration.sharepoint.com/sites/AIandAutomation/_layouts/15/DocIdRedir.aspx?ID=2DAU7XKFUY5M-1628067230-8613, 2DAU7XKFUY5M-1628067230-8613</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="header-eyebrow">Breach Secure Now — Internal Reference</div>
+    <h1>Product Launch Kit</h1>
+    <p>A Claude Code skill that guides product teams through the full go-to-market launch lifecycle — from foundation documents through GTM execution. This document is your starting point for understanding how the project is structured, what every file does, and how to use it.</p>
+    <div class="header-pills">
+      <span class="pill pill-mint">Claude Code deployment</span>
+      <span class="pill pill-teal">28 files · 7 phases</span>
+      <span class="pill pill-teal">Full launch + à la carte modes</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── Nav ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#what-is-this">What is this</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#phase-flow">Phase flow</a>
+    <a href="#file-inventory">File inventory</a>
+    <a href="#key-concepts">Key concepts</a>
+    <a href="#getting-started">Getting started</a>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════
+     WHAT IS THIS
+══════════════════════════════════════ -->
+<section id="what-is-this">
+  <div class="section-eyebrow">Overview</div>
+  <h2>What is this kit?</h2>
+  <p class="section-intro">The Product Launch Kit is a structured Claude Code project that automates and standardizes BSN's product go-to-market process. Rather than starting from scratch on every launch, the kit guides a product owner through a consistent sequence of phases — each producing a versioned, BSN-branded HTML artifact that can be shared, reviewed, and fed into the next phase.</p>
+
+  <div class="what-grid">
+    <div class="what-card">
+      <div class="icon">📋</div>
+      <h3>What it produces</h3>
+      <p>Versioned HTML outputs for every phase: Foundation Documents (Overview, PRD, PDD), a clickable prototype, a Now/Next/Later roadmap, user stories (Jira-ready), marketing messaging, objection handling guides, and demo scripts in three variants.</p>
+    </div>
+    <div class="what-card">
+      <div class="icon">🔁</div>
+      <h3>How it stays current</h3>
+      <p>Outputs are versioned (Option A — new file on each meaningful update). A staging system prevents accidental writes. Feedback loops connect phases — a prototype update automatically surfaces cascade changes to the roadmap and foundation docs.</p>
+    </div>
+    <div class="what-card">
+      <div class="icon">🏗️</div>
+      <h3>Where it lives</h3>
+      <p>A Claude Code repo — markdown files that Claude Code reads and orchestrates. Not the BSN skills library. Brand standards are fetched from the BSN MCP server at runtime, with a local fallback if unavailable.</p>
+    </div>
+    <div class="what-card">
+      <div class="icon">🧩</div>
+      <h3>Who it's for</h3>
+      <p>Any BSN product owner, PM, or marketer running a launch. The kit works for a full launch sequence run start-to-finish, or for individual phases run on their own when only a specific output is needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section id="how-it-works">
+  <div class="section-eyebrow">Modes</div>
+  <h2>How it works — two modes</h2>
+  <p class="section-intro">At kickoff, Claude Code asks whether you want to run the full launch sequence or just a specific phase. Both modes are fully supported.</p>
+
+  <div class="mode-grid">
+    <div class="mode-card full">
+      <span class="mode-label label-full">Full launch</span>
+      <h3>Full launch sequence</h3>
+      <p style="margin-bottom:12px;">Runs every phase in order from the questionnaire through GTM. Always pauses at Phase 00 (Foundation Documents) so you can review before continuing.</p>
+      <ol>
+        <li>Document upload (optional)</li>
+        <li>Questionnaire — Sections A–D</li>
+        <li>Phase 00 — Foundation Documents → <strong style="color:var(--mint)">pause</strong></li>
+        <li>Phase 01 — Prototype</li>
+        <li>Phase 02 — Roadmap</li>
+        <li>Phase 03 — Research (opt-in)</li>
+        <li>Phase 04 — User Stories (skippable)</li>
+        <li>Phases 05 / 06 / 07 — GTM (parallel)</li>
+      </ol>
+    </div>
+    <div class="mode-card carte">
+      <span class="mode-label label-carte">À la carte</span>
+      <h3>À la carte — pick a phase</h3>
+      <p style="margin-bottom:12px;">Run any single phase independently. Claude Code asks for whatever context it needs at entry — either upload existing files or answer targeted questions. Never refuses to run a phase due to missing upstream work.</p>
+      <ul>
+        <li><strong>00</strong> — Foundation Documents <em>(most common standalone)</em></li>
+        <li><strong>01</strong> — Prototype</li>
+        <li><strong>02</strong> — Roadmap</li>
+        <li><strong>03</strong> — Research (any sub-phase)</li>
+        <li><strong>04</strong> — User Stories</li>
+        <li><strong>05</strong> — Marketing Messaging</li>
+        <li><strong>06</strong> — Objection Handling</li>
+        <li><strong>07</strong> — Demo Script</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-teal" style="margin-top:20px;">
+    <strong>Session resumption:</strong> At the end of Phase 00, your questionnaire answers are saved to <code>questionnaire-responses.md</code>. When you return in a new session, Claude Code detects this file and pre-fills context automatically — you won't repeat the questionnaire.
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PHASE FLOW
+══════════════════════════════════════ -->
+<section id="phase-flow">
+  <div class="section-eyebrow">Sequence</div>
+  <h2>Phase flow</h2>
+  <p class="section-intro">Each phase builds on the last. Feedback loops run in both directions — a prototype version bump pushes updates back to Foundation Documents and the Roadmap. GTM findings can loop back to User Stories and the Roadmap.</p>
+
+  <div class="phase-flow">
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-orch"></div><div class="line line-orch"></div></div>
+      <div class="phase-body">
+        <div class="phase-node ph-orch">
+          <h4>Questionnaire + document upload</h4>
+          <p>Sections A–D. Upload existing docs for pre-fill. One question at a time — every answer confirmed before moving on.</p>
+          <div class="outputs">Produces: confirmed answers for Phase 00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-teal"></div><div class="line line-teal"></div></div>
+      <div class="phase-body">
+        <div class="phase-node ph-teal">
+          <h4>Phase 00 — Foundation Documents</h4>
+          <p>Overview v1, Milestone PRD v1, and PDD v1 — all three in a single tabbed HTML file. Saves <code>questionnaire-responses.md</code> for session resumption.</p>
+          <div class="outputs">Produces: overview-v1.html · prd-v1.html · pdd-v1.html · questionnaire-responses.md</div>
+        </div>
+        <span class="phase-pause ph-pause">⏸ Always pauses here — user confirms before continuing</span>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-teal"></div><div class="line line-teal"></div></div>
+      <div class="phase-body">
+        <div class="phase-node ph-teal">
+          <h4>Phase 01 — Prototype <span style="font-size:11px;font-weight:400;color:var(--teal);margin-left:6px;">hub</span></h4>
+          <p>Clickable HTML prototype with all required states (entry, core interaction, confirmation, error). The prototype is a hub — version bumps cascade back to Foundation Docs and the Roadmap. All changes go through the staging system before any file is written.</p>
+          <div class="outputs">Produces: prototype-v1.html (and subsequent versions)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-teal"></div><div class="line line-res"></div></div>
+      <div class="phase-body">
+        <div class="phase-node ph-teal">
+          <h4>Phase 02 — Roadmap</h4>
+          <p>Now / Next / Later roadmap. The Now column is anchored by what's in the prototype. Living document — updated in place, not versioned.</p>
+          <div class="outputs">Produces: roadmap.html</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-res"></div><div class="line line-res"></div></div>
+      <div class="phase-body">
+        <div class="phase-node ph-opt">
+          <h4>Phase 03 — Research <span style="font-size:11px;font-weight:400;color:var(--coral);margin-left:6px;">opt-in</span></h4>
+          <p>Five sub-phases: Persona Analysis (03-1), Competitive Analysis (03-2), SWOT+TOWS (03-3), Gap+Premortem (03-4), and Unified Review (03-5). The Unified Review produces Accept / Accept Risk / Reject decisions. Accepted risks carry forward to Phases 05 and 06 via <code>risks-log.md</code>.</p>
+          <div class="outputs">Produces: persona-analysis.html · competitive-analysis.html · swot-tows.html · gap-premortem.html · unified-review.html · risks-log.md entries</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-teal"></div><div class="line line-gtm"></div></div>
+      <div class="phase-body">
+        <div class="phase-node ph-teal">
+          <h4>Phase 04 — User Stories <span style="font-size:11px;font-weight:400;color:var(--teal);margin-left:6px;">skippable</span></h4>
+          <p>BDD format (Given/When/Then), Epic → Feature → Story hierarchy, scoped to the Now column. Stories are reviewed in Confluence before Jira import. GTM phases do not depend on this phase.</p>
+          <div class="outputs">Produces: user-stories.html</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-connector"><div class="dot dot-gtm"></div><div class="line line-gtm" style="opacity:0"></div></div>
+      <div class="phase-body">
+        <div class="parallel-note">Phases 05, 06, and 07 are independent peers — no dependency on each other. Can run in parallel or standalone.</div>
+        <div class="parallel-block">
+          <div class="phase-node ph-gtm">
+            <h4>05 — Messaging</h4>
+            <p style="font-size:11px;">Market track + channel enablement track. Positioning statement, proof points, message pillars, MSP elevator pitch, message matrix.</p>
+            <div class="outputs">marketing-messaging.html</div>
+          </div>
+          <div class="phase-node ph-gtm">
+            <h4>06 — Objections</h4>
+            <p style="font-size:11px;">SMB track + MSP track. Frequency-sorted (High/Medium/Low), minimum 8 per track, risk flag integration.</p>
+            <div class="outputs">objection-handling.html</div>
+          </div>
+          <div class="phase-node ph-gtm">
+            <h4>07 — Demo Script</h4>
+            <p style="font-size:11px;">Discovery (~15 min), Full Demo (~45 min), Client Enablement (~25 min). Prototype screen references throughout.</p>
+            <div class="outputs">demo-script.html</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FILE INVENTORY
+══════════════════════════════════════ -->
+<section id="file-inventory">
+  <div class="section-eyebrow">28 files</div>
+  <h2>Complete file inventory</h2>
+  <p class="section-intro">Every file in the repo, what it does, and how it's used. Files marked <em>generated</em> are created at runtime by Claude Code — they don't need to be committed to the repo as authored files.</p>
+
+  <!-- Orchestration -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>Orchestration</h3>
+      <span class="file-count badge b-orch">3 files</span>
+    </div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname">CLAUDE.md</span></td>
+        <td><span class="badge b-orch">orchestration</span></td>
+        <td class="fdesc">Master orchestrator. The first file Claude Code reads on every invocation. Governs kickoff routing (full launch vs. à la carte), phase sequencing, dependency checks, brand fetching, versioning conventions, the prototype staging pattern, and feedback loop behavior. If you're trying to understand how the kit works, start here.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">00-kickoff.md</span></td>
+        <td><span class="badge b-orch">orchestration</span></td>
+        <td class="fdesc">Step 0 handler. Manages document upload at session start, pre-fill extraction from uploaded documents, and handoff to the questionnaire. Referenced by CLAUDE.md at the start of every session.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">questionnaire.md</span></td>
+        <td><span class="badge b-orch">orchestration</span></td>
+        <td class="fdesc">The question bank. Section A (universal), B (Overview/PR FAQ), C (Milestone PRD — includes Q26 system roles), D (PDD). Includes pre-fill behavior rules, conflict handling when two documents disagree, and a final confirmation pass before any document is generated.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Foundation -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>Foundation documents — Phase 00</h3>
+      <span class="file-count badge b-found">3 files</span>
+    </div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname">example-overview.md</span></td>
+        <td><span class="badge b-found">foundation</span></td>
+        <td class="fdesc">Reference example for the Overview output. Contains a full worked example and the Direct + Human persona spec (problem earns solution, real-world scenarios, no jargon). Read by Claude Code before generating any Overview to lock format and voice.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">example-milestone-prd.md</span></td>
+        <td><span class="badge b-found">foundation</span></td>
+        <td class="fdesc">Reference example for the Milestone PRD. Contains the Precision PM persona spec (engineering-friendly, ASSUMPTION tags, measurable goals), inline SVG flow diagram specification, and edge case decision table format. Read before generating any PRD output.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">example-pdd.md</span></td>
+        <td><span class="badge b-found">foundation</span></td>
+        <td class="fdesc">Reference example for the Product Description Document. Contains the Confident Strategist + Brand Voice Guardian persona spec (names competitors, never hedges, marketing-first). Read before generating any PDD output.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Core phases -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>Core phases</h3>
+      <span class="file-count badge b-core">5 files</span>
+    </div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname">01-prototype.md</span></td>
+        <td><span class="badge b-core">core phase</span></td>
+        <td class="fdesc">Phase 01 instructions. Covers interactive HTML prototype generation, Option A versioning, Claude Code write-on-accept behavior, required UI states (entry, core interaction, confirmation, error), role indicators, and screen label conventions. The prototype is a hub — its version bumps cascade to Foundation Docs and the Roadmap via the staging system.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">02-roadmap.md</span></td>
+        <td><span class="badge b-core">core phase</span></td>
+        <td class="fdesc">Phase 02 instructions. Now/Next/Later roadmap with card anatomy, locked solid phase tag colors (Core/Growth/Partner/Platform/Compliance), uncertainty placeholder card treatment, and living-document update behavior (updated in place, no versioning).</td>
+      </tr>
+      <tr>
+        <td><span class="fname">04-user-stories.md</span></td>
+        <td><span class="badge b-core">core phase</span></td>
+        <td class="fdesc">Phase 04 instructions. BDD format (Given/When/Then), Epic → Feature → Story hierarchy, exact system role names (Partner Admin / Manager Admin / Manager / Employee from Q26), Confluence review before Jira export rule, ASSUMPTION and GAP tag handling, and collapsible HTML output format.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">bsn-personas.md</span></td>
+        <td><span class="badge b-core">core phase</span></td>
+        <td class="fdesc">The 8 default BSN personas used across the kit: 6 MSP-side (Marcus Webb, Dana Chu, Rachel Okonkwo, Tyler Barnett, Greg Palermo, Simone Delacroix) and 2 SMB-side (Janet Howell, Carlos Medina). Directly read by Phase 03-1 and Phase 03 intake.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">bsn-brand-fallback.md</span></td>
+        <td><span class="badge b-core">core phase</span></td>
+        <td class="fdesc">Local brand token fallback used when the MCP fetch of bsn-tools:bsn-brand fails. Contains the full 11-color palette, typography stacks (Jubilat/Georgia for headings, Halyard/Montserrat for body), required structural elements (accent lines, hex dot texture, card styles, pill badges), and a third-tier minimum fallback. Outputs using this file are flagged in their version header comment.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Research -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>Research — Phase 03 (opt-in)</h3>
+      <span class="file-count badge b-res">6 files</span>
+    </div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname">phase-03-intake.md</span></td>
+        <td><span class="badge b-res">research</span></td>
+        <td class="fdesc">Section E questions (E1–E12). Only asked when Phase 03 runs and the PO opts in. Covers competitive intelligence, win/loss patterns, customer switch reasons, and research depth. Lives here only — never duplicated in the questionnaire.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">03-1-persona-analysis.md</span></td>
+        <td><span class="badge b-res">research</span></td>
+        <td class="fdesc">Empathetic Researcher persona. Runs each BSN persona against approved upstream documents, produces finding tiles (one per persona — never collapsed), classification layer (Value Statement Miss / Gap / Risk / Suggested Update), severity badges (Critical / Moderate / Minor), cross-persona patterns, and a review summary after the Unified Review completes.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">03-2-competitive-analysis.md</span></td>
+        <td><span class="badge b-res">research</span></td>
+        <td class="fdesc">Intelligence Analyst persona. Web-researches each competitor across 6 dimensions, assigns confidence levels (Confirmed / Inferred / Unverified) to every claim, cross-checks PO inputs and flags conflicts, produces a competitive positioning SVG map and intelligence summary. Feeds strengths/weaknesses into 03-3 and competitive signals into 03-4.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">03-3-swot-tows.md</span></td>
+        <td><span class="badge b-res">research</span></td>
+        <td class="fdesc">Clear-Eyed Strategist persona. Produces a sourced SWOT (weaknesses shown at equal weight to strengths — no softening) and four TOWS strategy options (SO/ST/WO/WT), each scored on impact and feasibility. Options, not recommendations.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">03-4-gap-premortem.md</span></td>
+        <td><span class="badge b-res">research</span></td>
+        <td class="fdesc">Risk-First Thinker persona. Produces gap findings and a structured premortem — failure scenarios written in past tense across 5 categories, scored on likelihood (×0.40) and impact (×0.60), top 5 ranked with early warning signs required for each.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">03-5-unified-review.md</span></td>
+        <td><span class="badge b-res">research</span></td>
+        <td class="fdesc">Decision tool. Consolidates all Phase 03 findings in a tabbed interactive HTML document. PO-only decisions: Accept / Accept Risk / Reject. Identity tracking and stakeholder comments per finding. Meeting summary panel for live review sessions. Writes to risks-log.md on Accept Risk. Triggers staged-changes.md entries for accepted findings that affect prototype scope. Produces a post-review summary for SharePoint.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- GTM -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>GTM phases — independent peers</h3>
+      <span class="file-count badge b-gtm">3 files</span>
+    </div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname">05-marketing-messaging.md</span></td>
+        <td><span class="badge b-gtm">GTM</span></td>
+        <td class="fdesc">Dual mandate output: Market Messaging track (SMB/direct buyers) and Channel Enablement track (MSP partners). Produces positioning statement, proof points, 3 message pillars, CTA variants, MSP elevator pitch, "why now" frame, competitive positioning notes, internal talking points, and a message matrix table. Can run standalone or in parallel with 06 and 07.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">06-objection-handling.md</span></td>
+        <td><span class="badge b-gtm">GTM</span></td>
+        <td class="fdesc">Two-track HTML output: SMB objections (minimum 8, with 5 required standard objections) and MSP objections (minimum 8, with 5 required standard objections). Frequency system (High/Medium/Low) controls ordering and handling depth. Risk flag integration from risks-log.md. Collapsible entries. Can run standalone or parallel.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">07-demo-script.md</span></td>
+        <td><span class="badge b-gtm">GTM</span></td>
+        <td class="fdesc">Three variants in one tabbed HTML file: Discovery (~15–20 min, qualify and earn the demo), Full Demo (~30–45 min, show and build conviction), Client Enablement (~20–30 min, MSP runs without BSN present). Prototype screen references throughout. Internal-only sections (prep notes, qualification signals, MSP tips) visually distinct. Can run standalone or parallel.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Logs -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>logs/ — shared state (generated at runtime)</h3>
+      <span class="file-count badge b-log">3 files</span>
+    </div>
+    <div class="callout callout-amber" style="margin-bottom:14px;">These files are created by Claude Code as the kit runs. They do not need to be authored or committed to the repo — add a <code>logs/</code> folder with a <code>.gitkeep</code> to reserve the directory.</div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname generated">logs/risks-log.md</span></td>
+        <td><span class="badge b-log">generated</span></td>
+        <td class="fdesc">Accepted risks log. Written by Phase 03-5 when a finding is Accept Risk'd. Read by Phases 01, 05, 06, and 07 to apply risk flags and messaging guardrails. Each entry includes risk ID, source, severity, status, affected phases, and early warning signs. Treated as empty if file doesn't exist.</td>
+      </tr>
+      <tr>
+        <td><span class="fname generated">logs/staged-changes.md</span></td>
+        <td><span class="badge b-log">generated</span></td>
+        <td class="fdesc">Prototype change queue. Accumulates all pending prototype changes from any source — Phase 03-5 accepted findings, ad-hoc PO requests, and cascade updates triggered by Foundation Document changes. Read before every version bump. Status lifecycle: Pending → Approved / Deferred / Removed. Persists across sessions. Created on the first staged change.</td>
+      </tr>
+      <tr>
+        <td><span class="fname generated">questionnaire-responses.md</span></td>
+        <td><span class="badge b-log">generated</span></td>
+        <td class="fdesc">Session resume file. Written at the end of Phase 00 with all confirmed questionnaire answers and their sources. Detected automatically at the start of subsequent sessions and offered to pre-fill context. Prevents repeating the questionnaire when returning to continue a launch sequence.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Reference + meta -->
+  <div class="file-group">
+    <div class="file-group-header">
+      <h3>Reference + meta</h3>
+      <span class="file-count badge b-meta">5 files</span>
+    </div>
+    <table class="file-table">
+      <tr>
+        <td><span class="fname">FORMAT-SPEC.md</span></td>
+        <td><span class="badge b-meta">reference</span></td>
+        <td class="fdesc">Locked output format specification for every document type. Defines section order, layout rules, visual treatment (card styles, badge colors, callout types), multi-document export format (tabbed HTML / paginated PDF with page breaks and headers), and version header comment structure. Read by every phase before generating HTML. The single source of truth for output consistency — phase files point here rather than re-specifying format inline.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">OPEN-QUESTIONS.md</span></td>
+        <td><span class="badge b-meta">reference</span></td>
+        <td class="fdesc">Outstanding decisions and future work items. Q1 (prototype versioning — Option A) is resolved. Q2 (FORMAT-SPEC.md) is now complete. Any new unresolved decisions that would block a phase or CLAUDE.md update are logged here before work continues.</td>
+      </tr>
+      <tr>
+        <td><span class="fname">KIT-CHANGELOG.md</span></td>
+        <td><span class="badge b-meta">reference</span></td>
+        <td class="fdesc">Complete log of all design decisions across both build sessions — 38 entries. Includes a reconciliation status table (all 28 files currently ✅ Current), rationale for every decision, and a record of which files were updated when. Appended to on each meaningful change — never overwritten. The authoritative record for why things are the way they are.</td>
+      </tr>
+      <tr>
+        <td><span class="fname html-ref">dependency-map.html</span></td>
+        <td><span class="badge b-meta">reference</span></td>
+        <td class="fdesc">BSN-branded HTML visual showing the full phase dependency map — forward flow, feedback loops (amber dashed lines), à la carte bypass paths, and a dev track placeholder. Human reference only — not read by the kit at runtime. Useful for onboarding new team members and stakeholder review of the process.</td>
+      </tr>
+      <tr>
+        <td><span class="fname html-ref">repo-architecture.html</span></td>
+        <td><span class="badge b-meta">reference</span></td>
+        <td class="fdesc">BSN-branded HTML showing all 28 files grouped by category, plus a read/write relationship table documenting what each file reads and what it produces at runtime. Human reference only. Good companion to this document.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="count-bar">
+    <span class="count-item"><strong>28</strong> total files</span>
+    <span class="count-item"><strong>3</strong> orchestration</span>
+    <span class="count-item"><strong>3</strong> foundation</span>
+    <span class="count-item"><strong>5</strong> core phases</span>
+    <span class="count-item"><strong>6</strong> research</span>
+    <span class="count-item"><strong>3</strong> GTM</span>
+    <span class="count-item"><strong>3</strong> logs (generated)</span>
+    <span class="count-item"><strong>5</strong> reference + meta</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     KEY CONCEPTS
+══════════════════════════════════════ -->
+<section id="key-concepts">
+  <div class="section-eyebrow">Core decisions</div>
+  <h2>Key concepts to understand</h2>
+  <p class="section-intro">A few design decisions that run across the entire skill. Understanding these will make the repo make sense.</p>
+
+  <div class="concept-grid">
+
+    <div class="concept-card">
+      <span class="concept-badge" style="background:#E1F5EE;color:#085041;border:1px solid #5DCAA5;">Versioning</span>
+      <h3>Option A — new file on each update</h3>
+      <p>Four primary artifacts version this way: Overview, PRD, PDD, and Prototype. Each meaningful update produces a new file (<code>prototype-v2.html</code>, not an edit to <code>prototype-v1.html</code>). Previous versions are always preserved. Minor edits (typos, copy tweaks) do not trigger a version bump.</p>
+    </div>
+
+    <div class="concept-card">
+      <span class="concept-badge" style="background:#FAEEDA;color:#633806;border:1px solid #EF9F27;">Staging</span>
+      <h3>Prototype changes go through staging</h3>
+      <p>Claude Code never writes a new prototype version automatically. All changes — from any source — are added to <code>staged-changes.md</code> first. The user reviews the full list and explicitly approves before any file is written. "Actually never mind" removes the entry immediately — nothing is written.</p>
+    </div>
+
+    <div class="concept-card">
+      <span class="concept-badge" style="background:#E1F5EE;color:#085041;border:1px solid #5DCAA5;">Hub</span>
+      <h3>The prototype is a hub</h3>
+      <p>A prototype version bump is never just a prototype change. It cascades upstream to the Roadmap (scope changes affect Now/Next/Later) and Foundation Documents (Overview, PRD, PDD may need updates). Claude Code surfaces these cascades and asks before acting.</p>
+    </div>
+
+    <div class="concept-card">
+      <span class="concept-badge" style="background:#FAECE7;color:#712B13;border:1px solid #F0997B;">Feedback loops</span>
+      <h3>Phases flow both ways</h3>
+      <p>03-5 Unified Review → Prototype. Prototype → Foundation Docs + Roadmap. GTM phases (05/06/07) → User Stories + Roadmap. Dev track (future) → Prototype + User Stories + Roadmap. No update is automatic — Claude Code always asks before writing.</p>
+    </div>
+
+    <div class="concept-card">
+      <span class="concept-badge" style="background:#EEEDFE;color:#3C3489;border:1px solid #AFA9EC;">Brand</span>
+      <h3>MCP fetch → fallback → minimum</h3>
+      <p>Before every HTML output: (1) fetch <code>bsn-tools:bsn-brand</code> via MCP. (2) If unavailable, read <code>bsn-brand-fallback.md</code>. (3) If both unavailable, apply minimum tokens and flag in the version header comment. Outputs using the fallback are clearly marked.</p>
+    </div>
+
+    <div class="concept-card">
+      <span class="concept-badge" style="background:#E6F1FB;color:#0C447C;border:1px solid #85B7EB;">Export</span>
+      <h3>Tabbed HTML · paginated PDF</h3>
+      <p>When two or more documents are exported together, HTML uses a tabbed interface (one tab per document). PDF uses a page break and a document header before each section. Applies to Phase 00 Foundation Documents and any other combined export.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GETTING STARTED
+══════════════════════════════════════ -->
+<section id="getting-started">
+  <div class="section-eyebrow">Setup</div>
+  <h2>Getting started</h2>
+  <p class="section-intro">How to set up the kit in Claude Code and run your first session.</p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Clone the repo</h3>
+        <p>All 28 files live in a single directory. Create a <code>logs/</code> subdirectory with a <code>.gitkeep</code> file to reserve the folder for generated runtime files (<code>risks-log.md</code>, <code>staged-changes.md</code>, <code>questionnaire-responses.md</code>).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Open in Claude Code</h3>
+        <p>Open the repo directory in Claude Code. CLAUDE.md is the entry point — Claude Code reads it first on every invocation. No additional configuration is required beyond the repo being open.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Verify the MCP connection</h3>
+        <p>The kit fetches brand standards from <code>bsn-tools:bsn-brand</code> at runtime via MCP server <code>https://mcp.dev2.api.pii-protect.com/mcp</code>. Confirm this is accessible from your Claude Code environment. If it isn't, the kit will fall back to <code>bsn-brand-fallback.md</code> automatically — outputs will still be on-brand but should be verified before sharing.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Start a session</h3>
+        <p>Tell Claude Code you want to use the Product Launch Kit. It will read CLAUDE.md and ask: <em>"Are you running a full launch sequence, or do you need a specific phase on its own?"</em> — answer that question to get routed into the right flow.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>First-time: try Foundation Documents standalone</h3>
+        <p>If you're new to the kit, the best first run is: <strong>à la carte → Phase 00 — Foundation Documents</strong>. Upload an existing product brief if you have one, answer the questionnaire, and see the tabbed Overview/PRD/PDD output. This gives you a feel for the kit before committing to a full launch sequence.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <h3>Returning to a session</h3>
+        <p>If you ran Phase 00 previously, <code>questionnaire-responses.md</code> should exist in your working directory. When you start a new session, Claude Code detects it and asks if you want to pre-fill context from it. Say yes — it prevents you from repeating the full questionnaire.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout callout-teal" style="margin-top:32px;">
+    <strong>Reference documents:</strong> <code>dependency-map.html</code> shows how phases connect and feed each other. <code>repo-architecture.html</code> shows all 28 files with their read/write relationships. Both are human references — they're not read by the kit at runtime, but they're useful for understanding the project before you start.
+  </div>
+
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>Breach Secure Now — Product Launch Kit</p>
+    <p>Internal use only — confidential</p>
+  </div>
+</footer>
+
+</body>
+</html>

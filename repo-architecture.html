@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Launch Kit — Repo Architecture</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --navy:    #082f49;
+  --teal:    #308c83;
+  --mint:    #01ffe1;
+  --purple:  #39426f;
+  --seafoam: #c1ddd8;
+  --charcoal:#4c5454;
+  --lgray:   #d8dbe2;
+  --mist:    #dde1ea;
+  --white:   #ffffff;
+  --slide:   #f0f8fb;
+  --amber:   #BA7517;
+  --amber-bg:#FAEEDA;
+  --coral:   #993C1D;
+  --coral-bg:#FAECE7;
+  --blue:    #185FA5;
+  --blue-bg: #E6F1FB;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Montserrat', sans-serif; background: var(--slide); color: var(--charcoal); }
+
+header {
+  background: var(--navy);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='32' viewBox='0 0 28 32'><polygon points='14,2 26,9 26,23 14,30 2,23 2,9' fill='none' stroke='%23308c83' stroke-opacity='0.10' stroke-width='1'/></svg>");
+  padding: 28px 40px 24px;
+  position: relative;
+}
+header::after { content:''; display:block; height:2px; background:var(--mint); position:absolute; bottom:0; left:0; right:0; }
+.header-inner { max-width:1100px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; }
+.header-text h1 { font-family: Georgia, serif; font-size:24px; font-weight:700; color:var(--white); margin-bottom:4px; }
+.header-text p { font-size:13px; color:var(--seafoam); }
+.pill { background:var(--navy); border:1px solid var(--mint); color:var(--mint); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:4px 12px; border-radius:999px; white-space:nowrap; margin-top:4px; display:inline-block; }
+
+main { max-width:1100px; margin:0 auto; padding:36px 40px 60px; }
+
+.diagram-wrap {
+  background: var(--white);
+  border-radius:10px;
+  border:1px solid var(--mist);
+  box-shadow: 0 0 0 1px rgba(48,140,131,.15), 0 4px 16px rgba(0,0,0,.05);
+  padding:32px 28px;
+  margin-bottom:32px;
+}
+.diagram-title {
+  font-family: Georgia, serif;
+  font-size:16px;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:20px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--mist);
+}
+
+/* ── containers ── */
+.group {
+  border-radius:10px;
+  padding:14px 16px 16px;
+  margin-bottom:16px;
+  position:relative;
+}
+.group-label {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.files { display:flex; flex-wrap:wrap; gap:10px; }
+
+/* ── file cards ── */
+.file-card {
+  border-radius:6px;
+  padding:10px 14px;
+  min-width:160px;
+  cursor:pointer;
+  transition:opacity .15s;
+}
+.file-card:hover { opacity:.85; }
+.file-card .name { font-size:12px; font-weight:700; margin-bottom:2px; }
+.file-card .desc { font-size:11px; font-weight:400; opacity:.8; }
+
+/* ── group color themes ── */
+.group-orchestration { background:rgba(57,66,111,.08); border:1px solid rgba(57,66,111,.25); }
+.group-orchestration .group-label { color:var(--purple); }
+.group-orchestration .file-card { background:var(--purple); }
+.group-orchestration .file-card .name { color:#fff; }
+.group-orchestration .file-card .desc { color:var(--seafoam); }
+
+.group-foundation { background:rgba(48,140,131,.06); border:1px solid rgba(48,140,131,.25); }
+.group-foundation .group-label { color:var(--teal); }
+.group-foundation .file-card { background:var(--white); border:1px solid var(--teal); box-shadow:0 0 0 1px rgba(48,140,131,.2), 0 0 8px rgba(48,140,131,.1); }
+.group-foundation .file-card .name { color:var(--navy); }
+.group-foundation .file-card .desc { color:var(--charcoal); }
+
+.group-core { background:rgba(48,140,131,.06); border:1px solid rgba(48,140,131,.25); }
+.group-core .group-label { color:var(--teal); }
+.group-core .file-card { background:var(--white); border:1px solid var(--teal); box-shadow:0 0 0 1px rgba(48,140,131,.2), 0 0 8px rgba(48,140,131,.1); }
+.group-core .file-card .name { color:var(--navy); }
+.group-core .file-card .desc { color:var(--charcoal); }
+
+.group-research { background:rgba(153,60,29,.06); border:1px solid rgba(153,60,29,.2); }
+.group-research .group-label { color:var(--coral); }
+.group-research .file-card { background:var(--coral-bg); border:1px solid rgba(153,60,29,.3); }
+.group-research .file-card .name { color:var(--coral); }
+.group-research .file-card .desc { color:var(--charcoal); }
+
+.group-gtm { background:rgba(24,95,165,.06); border:1px solid rgba(24,95,165,.2); }
+.group-gtm .group-label { color:var(--blue); }
+.group-gtm .file-card { background:var(--blue-bg); border:1px solid rgba(24,95,165,.3); }
+.group-gtm .file-card .name { color:var(--blue); }
+.group-gtm .file-card .desc { color:var(--charcoal); }
+
+.group-logs { background:rgba(186,117,23,.06); border:1px solid rgba(186,117,23,.2); }
+.group-logs .group-label { color:var(--amber); }
+.group-logs .file-card { background:var(--amber-bg); border:1px solid rgba(186,117,23,.3); }
+.group-logs .file-card .name { color:#854F0B; }
+.group-logs .file-card .desc { color:var(--charcoal); }
+
+.group-meta { background:rgba(76,84,84,.06); border:1px solid rgba(76,84,84,.2); }
+.group-meta .group-label { color:var(--charcoal); }
+.group-meta .file-card { background:var(--lgray); border:1px solid rgba(76,84,84,.2); }
+.group-meta .file-card .name { color:var(--navy); }
+.group-meta .file-card .desc { color:var(--charcoal); }
+
+/* ── legend ── */
+.legend { display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:20px; padding:14px 16px; background:var(--white); border-radius:8px; border:1px solid var(--mist); }
+.legend-item { display:flex; align-items:center; gap:7px; font-size:11px; font-weight:500; color:var(--charcoal); }
+.legend-dot { width:11px; height:11px; border-radius:3px; flex-shrink:0; }
+
+footer { background:var(--navy); padding:16px 40px; position:relative; }
+footer::before { content:''; display:block; height:2px; background:var(--mint); position:absolute; top:0; left:0; right:0; }
+.footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; }
+footer p { font-size:11px; color:var(--seafoam); }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">2DAU7XKFUY5M-1628067230-8627</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">98032116-cbc8-4ea4-bde9-62e73d80a756</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://entegration.sharepoint.com/sites/AIandAutomation/_layouts/15/DocIdRedir.aspx?ID=2DAU7XKFUY5M-1628067230-8627, 2DAU7XKFUY5M-1628067230-8627</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-text">
+      <h1>Product Launch Kit — Repo Architecture</h1>
+      <p>All files grouped by category with read/write relationships</p>
+    </div>
+    <span class="pill">Internal use only</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- DIAGRAM 1: Repo structure -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Repo structure — all files by category</div>
+
+    <div class="group group-orchestration">
+      <div class="group-label">Orchestration</div>
+      <div class="files">
+        <div class="file-card"><div class="name">CLAUDE.md</div><div class="desc">Master orchestrator</div></div>
+        <div class="file-card"><div class="name">00-kickoff.md</div><div class="desc">Step 0, doc upload</div></div>
+        <div class="file-card"><div class="name">questionnaire.md</div><div class="desc">Sections A–D, pre-fill</div></div>
+      </div>
+    </div>
+
+    <div class="group group-foundation">
+      <div class="group-label">Foundation documents — Phase 00</div>
+      <div class="files">
+        <div class="file-card"><div class="name">example-overview.md</div><div class="desc">Format + persona reference</div></div>
+        <div class="file-card"><div class="name">example-milestone-prd.md</div><div class="desc">Format + persona reference</div></div>
+        <div class="file-card"><div class="name">example-pdd.md</div><div class="desc">Format + persona reference</div></div>
+      </div>
+    </div>
+
+    <div class="group group-core">
+      <div class="group-label">Core phases</div>
+      <div class="files">
+        <div class="file-card"><div class="name">01-prototype.md</div><div class="desc">Interactive HTML, hub</div></div>
+        <div class="file-card"><div class="name">02-roadmap.md</div><div class="desc">Now / Next / Later</div></div>
+        <div class="file-card"><div class="name">04-user-stories.md</div><div class="desc">BDD, Jira-ready</div></div>
+        <div class="file-card"><div class="name">bsn-personas.md</div><div class="desc">8 default personas</div></div>
+      </div>
+    </div>
+
+    <div class="group group-research">
+      <div class="group-label">Research — Phase 03 (opt-in)</div>
+      <div class="files">
+        <div class="file-card"><div class="name">phase-03-intake.md</div><div class="desc">Section E intake</div></div>
+        <div class="file-card"><div class="name">03-1-persona-analysis.md</div><div class="desc">Empathetic Researcher</div></div>
+        <div class="file-card"><div class="name">03-2-competitive-analysis.md</div><div class="desc">Intelligence Analyst</div></div>
+        <div class="file-card"><div class="name">03-3-swot-tows.md</div><div class="desc">Clear-Eyed Strategist</div></div>
+        <div class="file-card"><div class="name">03-4-gap-premortem.md</div><div class="desc">Risk-First Thinker</div></div>
+        <div class="file-card"><div class="name">03-5-unified-review.md</div><div class="desc">Accept / risk / reject</div></div>
+      </div>
+    </div>
+
+    <div class="group group-gtm">
+      <div class="group-label">GTM phases — independent peers</div>
+      <div class="files">
+        <div class="file-card"><div class="name">05-marketing-messaging.md</div><div class="desc">Market + channel</div></div>
+        <div class="file-card"><div class="name">06-objection-handling.md</div><div class="desc">SMB + MSP tracks</div></div>
+        <div class="file-card"><div class="name">07-demo-script.md</div><div class="desc">3 variants</div></div>
+      </div>
+    </div>
+
+    <div class="group group-logs">
+      <div class="group-label">logs/ — shared state files</div>
+      <div class="files">
+        <div class="file-card"><div class="name">risks-log.md</div><div class="desc">Accepted risks log</div></div>
+        <div class="file-card"><div class="name">staged-changes.md</div><div class="desc">Prototype change queue</div></div>
+        <div class="file-card"><div class="name">questionnaire-responses.md</div><div class="desc">Session resume file</div></div>
+      </div>
+    </div>
+
+    <div class="group group-meta">
+      <div class="group-label">Reference + meta</div>
+      <div class="files">
+        <div class="file-card"><div class="name">FORMAT-SPEC.md</div><div class="desc">Output format spec</div></div>
+        <div class="file-card"><div class="name">OPEN-QUESTIONS.md</div><div class="desc">Outstanding decisions</div></div>
+        <div class="file-card"><div class="name">KIT-CHANGELOG.md</div><div class="desc">All design decisions</div></div>
+        <div class="file-card"><div class="name">bsn-brand-fallback.md</div><div class="desc">Brand tokens, offline</div></div>
+        <div class="file-card"><div class="name">dependency-map.html</div><div class="desc">Phase flow reference</div></div>
+        <div class="file-card"><div class="name">repo-architecture.html</div><div class="desc">This file</div></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Orchestration</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div>Foundation + core</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--coral-bg);border:1px solid var(--coral)"></div>Research (opt-in)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--blue-bg);border:1px solid var(--blue)"></div>GTM phases</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber-bg);border:1px solid var(--amber)"></div>Logs / shared state</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--lgray)"></div>Reference + meta</div>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 2: Read/write relationships -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">Read / write relationships at runtime</div>
+
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="background:var(--navy);">
+          <th style="padding:10px 14px;text-align:left;color:var(--white);font-weight:600;border-radius:6px 0 0 0;">File</th>
+          <th style="padding:10px 14px;text-align:left;color:var(--white);font-weight:600;">Reads</th>
+          <th style="padding:10px 14px;text-align:left;color:var(--white);font-weight:600;border-radius:0 6px 0 0;">Written by / produces</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--purple);border-bottom:1px solid var(--mist);">CLAUDE.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">All phase files, FORMAT-SPEC.md, OPEN-QUESTIONS.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Authored — not generated</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--purple);border-bottom:1px solid var(--mist);">00-kickoff.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">questionnaire.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Orchestrated by CLAUDE.md</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--purple);border-bottom:1px solid var(--mist);">questionnaire.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Uploaded documents (pre-fill)</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Produces questionnaire-responses.md</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--teal);border-bottom:1px solid var(--mist);">Phase 00</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">example-overview.md, example-milestone-prd.md, example-pdd.md, bsn-tools:bsn-brand (MCP)</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">overview-v1.html, prd-v1.html, pdd-v1.html, questionnaire-responses.md</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--teal);border-bottom:1px solid var(--mist);">01-prototype.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Phase 00 outputs, bsn-tools:bsn-brand, staged-changes.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">prototype-v[N].html — triggers updates to Phase 00 docs + roadmap</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--teal);border-bottom:1px solid var(--mist);">02-roadmap.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Phase 01 prototype, questionnaire responses</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">roadmap.html (living doc, updated in place)</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--coral);border-bottom:1px solid var(--mist);">03-1 through 03-4</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Phase 00 docs, prototype, bsn-personas.md, section E intake</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Tagged findings (PA-NNN, CA-NNN) fed into 03-5</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--coral);border-bottom:1px solid var(--mist);">03-5 unified-review.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">03-1 through 03-4 findings</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Writes risks-log.md, triggers staged-changes.md entries</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--teal);border-bottom:1px solid var(--mist);">04-user-stories.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Prototype, roadmap (Now column), questionnaire Section C (Q26)</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">user-stories.html</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--blue);border-bottom:1px solid var(--mist);">05, 06, 07</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Phase 00 docs, prototype, risks-log.md, questionnaire responses</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">marketing-messaging.html, objection-handling.html, demo-script.html</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:#854F0B;border-bottom:1px solid var(--mist);">risks-log.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">—</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Written by 03-5. Read by 01, 05, 06, 07.</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:#854F0B;border-bottom:1px solid var(--mist);">staged-changes.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">—</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Written by any phase (ad-hoc, 03-5, cascade). Read before every prototype version bump.</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--charcoal);border-bottom:1px solid var(--mist);">FORMAT-SPEC.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">—</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Read by every phase before generating HTML output.</td>
+        </tr>
+        <tr style="background:var(--slide);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--charcoal);border-bottom:1px solid var(--mist);">bsn-brand-fallback.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">—</td>
+          <td style="padding:10px 14px;color:var(--charcoal);border-bottom:1px solid var(--mist);">Read when MCP fetch of bsn-tools:bsn-brand fails.</td>
+        </tr>
+        <tr style="background:var(--white);">
+          <td style="padding:10px 14px;font-weight:700;color:var(--charcoal);">KIT-CHANGELOG.md</td>
+          <td style="padding:10px 14px;color:var(--charcoal);">—</td>
+          <td style="padding:10px 14px;color:var(--charcoal);">Appended to by any phase on meaningful change. Never overwritten.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- brand chain callout -->
+    <div style="margin-top:20px;padding:14px 16px;border-left:3px solid var(--teal);background:rgba(48,140,131,.06);border-radius:0 6px 6px 0;">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:4px;">Brand fetch chain — runs before every HTML output</div>
+      <div style="font-size:12px;color:var(--charcoal);">
+        1. Fetch <strong>bsn-tools:bsn-brand</strong> via MCP (primary)<br>
+        2. If MCP unavailable → read <strong>bsn-brand-fallback.md</strong> (local fallback)<br>
+        3. If both unavailable → apply minimum brand tokens and flag in HTML version header comment
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p>Breach Secure Now — Product Launch Kit</p>
+    <p>Internal use only — confidential</p>
+  </div>
+</footer>
+
+</body>
+</html>
