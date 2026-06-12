@@ -26,6 +26,39 @@ Presents the full picture — strengths and weaknesses with equal rigor. Does no
 
 ---
 
+## Resuming After a Pause
+
+Phase 03-3 may run as part of a continuous session or as a return after a break. Before starting, check for all required upstream artifacts.
+
+**Check for the following files in the working directory:**
+
+```
+Required:
+  - [product-slug]-competitive-analysis-v[N].html  ← competitor strengths feed threats, weaknesses feed opportunities
+  - section-e-responses.md                          ← E1–E4 (strengths, weaknesses, opportunities, threats)
+
+Strongly recommended:
+  - overview-v[N].html         ← product positioning, differentiators
+  - pdd-v[N].html              ← market segment, competitive framing
+  - questionnaire-responses.md ← Q8, Q12, Q14
+```
+
+Always use the highest-numbered version of each file.
+
+**If competitive analysis output and Section E exist:**
+Read both in full before building the SWOT. Greet the user if returning:
+> "Welcome back. I've read the competitive analysis and your Section E answers and I'm ready to build the SWOT + TOWS. Let's continue."
+
+**If competitive analysis is missing:**
+Stop and flag:
+> "I can't find a completed competitive analysis output. Phase 03-3 depends on that document — competitor strengths and weaknesses feed directly into the SWOT threats and opportunities quadrants. Complete Phase 03-2 first."
+
+**If Section E answers are missing but competitive analysis exists:**
+Proceed with a warning:
+> "I don't see Section E responses. I'll build the SWOT from the competitive analysis and questionnaire answers — but the strengths, weaknesses, opportunities, and threats quadrants will be less complete without your direct input. You can provide Section E answers now or I'll flag gaps in the SWOT."
+
+---
+
 ## Inputs — Read Before Starting
 
 1. **Section E answers** — E1 (strengths), E2 (weaknesses), E3 (opportunities), E4 (threats)

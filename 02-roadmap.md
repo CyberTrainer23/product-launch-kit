@@ -11,6 +11,49 @@ Generate a visual Now/Next/Later roadmap scoped to the product or feature. The r
 
 ---
 
+## Resuming After a Pause
+
+Phase 02 may run immediately after Phase 01 in a continuous session, or as a return session where the user is picking up after a break. Before generating anything, check which context files are available.
+
+**Step 1 — Check for upstream artifacts in the working directory:**
+
+```
+Priority order (highest to lowest):
+  1. prototype-v[N].html        ← primary source for Now column
+  2. prd-v[N].html              ← feature scope and milestone detail
+  3. overview-v[N].html         ← product framing and launch goals
+  4. pdd-v[N].html              ← positioning context
+  5. questionnaire-responses.md ← fallback if no HTML artifacts exist
+```
+
+Always use the highest-numbered version of each file if multiple versions exist (e.g. `prototype-v2.html` over `prototype-v1.html`).
+
+**If prototype exists (normal or returning session):**
+
+1. Read the prototype file in full — features visible in the prototype belong in the Now column
+2. Read any foundation documents that exist (Overview, PRD, PDD)
+3. Also read `questionnaire-responses.md` if it exists
+4. Greet the user if this is a return session:
+   > "Welcome back. I've read your prototype and foundation documents and I'm ready to build the roadmap. The prototype will anchor the Now column — let's continue."
+5. Proceed to Generation Instructions
+
+**If prototype does NOT exist but foundation documents do:**
+
+1. Read all available foundation documents
+2. Notify the user:
+   > "I don't see a completed prototype file. I'll build the roadmap from your Foundation Documents instead — the Now column will be based on the PRD scope rather than prototype screens. You can rerun Phase 01 at any time and the roadmap can be updated to reflect it."
+3. Proceed to Generation Instructions using PRD feature scope to populate the Now column
+
+**If neither prototype nor foundation documents exist:**
+
+1. Read `questionnaire-responses.md` if available
+2. If that also doesn't exist, ask:
+   > "I don't see a prototype, foundation documents, or a questionnaire responses file. Did you complete earlier phases, or are you starting the roadmap from scratch? If starting fresh, I'll need to run the questionnaire first."
+3. If proceeding from questionnaire only, note it prominently in the roadmap output:
+   > *"This roadmap was generated from questionnaire answers. Running Phase 01 (Prototype) will provide a more grounded basis for the Now column."*
+
+---
+
 ## Output
 
 **File:** `[slug]-roadmap-v[N].html`

@@ -5,6 +5,44 @@ Generate a complete marketing messaging framework for the product or feature. Th
 
 ---
 
+## Resuming After a Pause
+
+Phase 05 may run immediately after Phase 04 or as a return session. It can also run à la carte without all upstream phases having completed. Before generating, check what's available.
+
+**Check for the following files in the working directory:**
+
+```
+Core inputs:
+  - questionnaire-responses.md     ← Sections A, B, D — required for positioning and copy
+
+Phase 03 outputs (use if they exist — significantly improve output quality):
+  - [product-slug]-persona-analysis-v[N].html     ← audience-specific message tuning
+  - [product-slug]-competitive-analysis-v[N].html ← competitive positioning notes
+  - [product-slug]-unified-review-v[N].html       ← accepted findings, scope adjustments
+  - logs/risks-log.md                              ← risk-aware messaging guardrails
+
+Other helpful context:
+  - overview-v[N].html   ← value prop, proof points
+  - pdd-v[N].html        ← positioning, competitive framing, language guidelines
+```
+
+Always use the highest-numbered version of each file.
+
+**If questionnaire responses exist:**
+Read them before generating. Greet the user if returning:
+> "Welcome back. I've reviewed the questionnaire responses and any available Phase 03 outputs and I'm ready to build the messaging framework. Let's continue."
+Note which Phase 03 outputs were found and will be used.
+
+**If questionnaire responses are missing:**
+Stop and ask:
+> "I can't find a questionnaire responses file. Sections A, B, and D are required for the messaging framework — they define the target persona, the problem statement, and positioning inputs. Did Phase 00 complete? If so, check that `questionnaire-responses.md` is in the working directory."
+
+**If Phase 03 outputs are missing (but questionnaire exists):**
+Proceed and note the gap:
+> "I don't see Phase 03 outputs (persona analysis, competitive analysis). I'll build the messaging framework from the questionnaire and Foundation Documents — Phase 03 outputs would add audience-specific tuning and competitive positioning depth. You can run Phase 03 later and the messaging can be updated."
+
+---
+
 ## When This Phase Runs
 - Triggered after Phase 04 (User Stories) completes
 - If Phase 03 ran: accepted risks from `risks-log.md` are factored into messaging — avoid building campaigns around capabilities flagged as high-risk or unresolved

@@ -11,6 +11,36 @@ Generate a clickable HTML prototype scoped to the product or feature described i
 
 ---
 
+## Resuming After a Pause
+
+Phase 01 may start fresh (immediately after the questionnaire) or as a return session (the user paused after Phase 00 and is coming back). Before generating anything, check which situation applies.
+
+**Step 1 — Check for existing foundation documents:**
+
+```
+Look for any of these files in the working directory:
+  - overview-v1.html (or any higher version)
+  - prd-v1.html (or any higher version)
+  - pdd-v1.html (or any higher version)
+```
+
+**If foundation documents exist (returning session):**
+
+1. Read all three documents in full — Overview, PRD, and PDD
+2. Also read `questionnaire-responses.md` if it exists
+3. Greet the user:
+   > "Welcome back. I can see your Foundation Documents from Phase 00 — I've read the Overview, PRD, and PDD and I'm ready to build the prototype from that context. Let's pick up where you left off."
+4. Proceed to Generation Instructions using the foundation document content as the primary source of truth. Where foundation document content and questionnaire answers conflict, use the foundation documents — they represent the refined, reviewed version of the answers.
+
+**If foundation documents do NOT exist (fresh session):**
+
+1. Read `questionnaire-responses.md`
+2. If `questionnaire-responses.md` also doesn't exist, ask:
+   > "I don't see a questionnaire responses file or any foundation documents. Did you complete Phase 00, or are you starting fresh? If starting fresh, I'll need to run the questionnaire first."
+3. Proceed to Generation Instructions using questionnaire answers as the source of truth.
+
+---
+
 ## Output
 
 **File:** `prototype-v1.html` (first generation)

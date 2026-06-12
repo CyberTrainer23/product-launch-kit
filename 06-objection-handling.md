@@ -5,6 +5,38 @@ Generate a comprehensive objection handling guide covering the objections most l
 
 ---
 
+## Resuming After a Pause
+
+Phase 06 may run immediately after Phase 05 or as a return session. It can also run à la carte. Before generating, check what's available.
+
+**Check for the following files in the working directory:**
+
+```
+Strongly recommended:
+  - marketing-messaging.html     ← reframe language must be consistent with Phase 05 messaging
+
+Also read if present:
+  - logs/risks-log.md            ← risk flags on objections tied to known gaps
+  - questionnaire-responses.md   ← Section D (Q34–Q37) for objection identification
+  - [product-slug]-persona-analysis-v[N].html     ← root concern framing, persona nuance
+  - [product-slug]-competitive-analysis-v[N].html ← competitive displacement objections
+```
+
+Always use the highest-numbered version of each file.
+
+**If marketing messaging output exists:**
+Read it in full before generating objection responses — language must stay consistent. Greet the user if returning:
+> "Welcome back. I've read the marketing messaging document and I'm ready to build the objection handling guide. Reframe language will stay consistent with Phase 05. Let's continue."
+
+**If marketing messaging is missing:**
+Proceed but flag it:
+> "I don't see a completed marketing messaging document. I'll build objection responses from the questionnaire and any available Phase 03 outputs — but the reframe language may not be fully consistent with your messaging. Running Phase 05 first (or after) will let you align them. Do you want to proceed anyway?"
+
+**If risks log exists:**
+Always read it — objections tied to known risks need special handling depth.
+
+---
+
 ## When This Phase Runs
 - Triggered after Phase 05 (Marketing Messaging) completes
 - Accepted risks from `risks-log.md` are reviewed before generation — objections tied to known risks receive additional handling depth

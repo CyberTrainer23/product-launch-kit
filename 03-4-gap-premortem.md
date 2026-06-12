@@ -29,6 +29,41 @@ Treats optimism as a liability. Does not balance findings with reassurance. Does
 
 ---
 
+## Resuming After a Pause
+
+Phase 03-4 may run as part of a continuous session or as a return after a break. Before starting, check for all required upstream artifacts.
+
+**Check for the following files in the working directory:**
+
+```
+Required:
+  - [product-slug]-persona-analysis-v[N].html       ← accepted findings, cross-persona patterns
+  - [product-slug]-competitive-analysis-v[N].html   ← competitor strengths, market signals
+  - [product-slug]-swot-tows-v[N].html              ← weaknesses and threats quadrants
+
+Also read if present:
+  - overview-v[N].html, prd-v[N].html, pdd-v[N].html
+  - section-e-responses.md  ← E10 (past failures), E11 (critical assumptions), E12 (irrelevance scenarios)
+  - logs/risks-log.md       ← any risks already accepted in previous sessions
+  - questionnaire-responses.md
+```
+
+Always use the highest-numbered version of each file.
+
+**If all three Phase 03 upstream outputs exist:**
+Read them in full before starting. Greet the user if returning:
+> "Welcome back. I've read the persona analysis, competitive analysis, and SWOT + TOWS and I'm ready to run the gap analysis and premortem. Let's continue."
+
+**If one or more Phase 03 upstream outputs are missing:**
+Flag specifically which ones are missing and what impact that has:
+> "I'm missing [file(s)]. The gap analysis depends on [persona findings / competitive exposures / SWOT weaknesses and threats] from those documents. I can proceed with reduced inputs, but the findings will be less grounded. Do you want to complete those phases first, or continue with what's available?"
+
+**If Section E answers are missing:**
+Proceed but note the gap:
+> "I don't see Section E responses. The premortem scenarios work best with your critical assumptions (E11) and market irrelevance scenarios (E12). I'll generate scenarios from the available research — add those answers later to strengthen the premortem."
+
+---
+
 ## Inputs — Read Before Starting
 
 1. **Persona analysis output** (`03-1-persona-analysis.md`) — accepted findings, cross-persona patterns

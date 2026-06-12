@@ -19,6 +19,42 @@ This version field is the source of truth for which release of the kit is instal
 
 ---
 
+## Update Mode Detection
+
+At the start of every session, before entering the launch flow, scan the user's first message for update intent signals.
+
+**Trigger phrases (any of these activate Update Mode):**
+- "I need to make a change to the kit"
+- "update [any filename]"
+- "fix [any filename or phase name]"
+- "edit the kit"
+- "something is wrong with [any file or phase]"
+- "add [something] to the kit"
+- "modify [any filename]"
+- "I found an issue in [any file or phase]"
+- "the kit needs a change"
+
+**If any trigger phrase is detected:**
+
+1. Do NOT enter the launch session flow
+2. Output this message:
+
+> "🔧 Update Mode
+>
+> Looks like you want to make a change to the kit. I'll walk you through the whole process — no Git knowledge needed.
+>
+> Reading update-kit.md..."
+
+3. Read `update-kit.md` in full
+4. Follow the instructions in `update-kit.md` exclusively for the remainder of the session
+
+**If no trigger phrase is detected:**
+Proceed with the normal launch session flow as defined below.
+
+**Returning to Launch Mode:** If the user completes an update and wants to start a launch session in the same Claude Code window, they can say "start a launch session" or "back to launch mode." Re-read `CLAUDE.md` from the top to reset context.
+
+---
+
 ## What this kit does
 
 This kit guides a product team at BSN through the full go-to-market launch lifecycle — from foundation documents through GTM execution. It produces a structured set of versioned, BSN-branded HTML artifacts at each phase that can be downloaded, shared, imported into Jira, or used to inform development.

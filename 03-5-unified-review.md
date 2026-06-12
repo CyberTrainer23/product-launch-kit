@@ -13,6 +13,35 @@ The Unified Review contains the conclusions. The source documents contain the ev
 
 ---
 
+## Resuming After a Pause
+
+Phase 03-5 may run as part of a continuous session or as a return after a break. All four source documents must be complete before the Unified Review can be generated — this is a hard dependency, not a recommendation.
+
+**Check for the following files in the working directory:**
+
+```
+All four required:
+  - [product-slug]-persona-analysis-v[N].html     ← findings tagged PA-XXX
+  - [product-slug]-competitive-analysis-v[N].html ← findings tagged CA-XXX
+  - [product-slug]-swot-tows-v[N].html            ← items tagged ST-XXX
+  - [product-slug]-gap-premortem-v[N].html        ← gaps tagged GA-XXX, scenarios tagged PM-XXX
+
+Also read if present:
+  - logs/risks-log.md  ← any risks already logged from prior sessions
+```
+
+Always use the highest-numbered version of each file.
+
+**If all four source documents exist:**
+Read them in full before extracting findings. Greet the user if returning:
+> "Welcome back. I've read all four Phase 03 documents and I'm ready to generate the Unified Review. Let me extract and deduplicate findings before we begin."
+
+**If any source document is missing:**
+Stop completely — do not attempt a partial Unified Review:
+> "The Unified Review requires all four Phase 03 documents to be complete. I'm missing: [list]. A partial Unified Review would produce an incomplete decision record. Complete the missing phase(s) and come back — the work you've done so far is saved in the output files."
+
+---
+
 ## Inputs — Read Before Starting
 
 All four Phase 03 source documents must be complete before the Unified Review is generated:

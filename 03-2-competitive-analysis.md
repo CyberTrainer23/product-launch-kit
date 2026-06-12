@@ -32,6 +32,40 @@ Operates like a researcher, not a strategist. Every claim has a source. Distingu
 
 ---
 
+## Resuming After a Pause
+
+Phase 03-2 may run as part of a continuous session or as a return after a break. Before starting, check for all required upstream artifacts.
+
+**Check for the following files in the working directory:**
+
+```
+Required:
+  - section-e-responses.md (or equivalent Section E capture)
+    ← named competitors (E5), indirect competitors (E6), win/loss info (E8, E9)
+
+Strongly recommended:
+  - overview-v[N].html    ← differentiators, problem statement
+  - pdd-v[N].html         ← competitive landscape as stated by product team
+  - questionnaire-responses.md ← Q9 (alternatives), Q10 (gaps), Q12 (differentiators)
+
+Helpful if present:
+  - Any uploaded competitive intelligence documents
+```
+
+**If Section E responses exist:**
+Read them before presenting the competitor list. Greet the user if returning:
+> "Welcome back. I've reviewed your Section E answers and I'm ready to build the competitive analysis. Let me confirm the competitor list before I begin researching."
+
+**If Section E responses are missing but foundation docs exist:**
+Proceed with the competitor list from questionnaire answers and PDD, but flag the gap:
+> "I don't see a Section E responses file. I'll build the initial competitor list from your questionnaire answers and PDD — but if you completed the Phase 03 intake, share that file and I can use the fuller context."
+
+**If neither Section E nor foundation docs exist:**
+Stop and ask:
+> "I can't find questionnaire responses or Section E answers. I need at least the named competitors and your product's differentiators before running the competitive analysis. Can you share those files or paste the information?"
+
+---
+
 ## Inputs — Read Before Starting
 
 1. **Section E answers from `phase-03-intake.md`** — named competitors, existing competitive intelligence, win/loss patterns, why customers switch

@@ -29,6 +29,42 @@ Reads between the lines of what a persona would say without projecting emotions 
 
 ---
 
+## Resuming After a Pause
+
+Phase 03-1 may run as part of a continuous session or as a return after a break. Before starting, check for all required upstream artifacts.
+
+**Check for the following files in the working directory:**
+
+```
+Required:
+  - overview-v[N].html       ← problem statement, value prop, FAQ
+  - prd-v[N].html            ← features, goals, non-goals
+  - pdd-v[N].html            ← positioning, competitive landscape, language
+
+Strongly recommended:
+  - prototype-v[N].html      ← what the product actually does
+
+Also read if present:
+  - questionnaire-responses.md
+  - section-e-responses.md (or equivalent Section E capture)
+```
+
+Always use the highest-numbered version of each file.
+
+**If all required documents exist:**
+Read them in full before presenting personas. Greet the user if returning:
+> "Welcome back. I've read the Overview, PRD, PDD, and prototype and I'm ready to run the persona analysis. Let's continue."
+
+**If prototype is missing but foundation docs exist:**
+Proceed, but note it:
+> "I don't see a prototype file. I'll run the persona analysis against the Foundation Documents — the simulation will be based on the documented product intent rather than the actual UI. If a prototype exists, share it and I'll re-run."
+
+**If foundation documents are missing:**
+Stop and ask:
+> "I can't find the Foundation Documents (Overview, PRD, PDD). These are required before running the persona analysis. Did Phase 00 complete? If so, check that the output files are in the working directory."
+
+---
+
 ## Inputs — Read Before Starting
 
 1. **Overview** — problem statement, solution, value proposition, FAQ

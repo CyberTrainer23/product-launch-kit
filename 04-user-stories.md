@@ -5,6 +5,42 @@ Generate a structured backlog of user stories scoped to the v1 feature set. Stor
 
 ---
 
+## Resuming After a Pause
+
+Phase 04 may run immediately after Phase 02 or 03-5, or as a return session. Before generating, check which upstream artifacts are available.
+
+**Check for the following files in the working directory:**
+
+```
+Required (one of these must exist):
+  - [product-slug]-roadmap-v[N].html        ← Now column defines v1 story scope
+
+Phase 03 outputs (read if they exist):
+  - [product-slug]-unified-review-v[N].html ← accepted findings that affect feature scope
+  - logs/risks-log.md                        ← risk flags to carry into stories
+
+Also read if present:
+  - prototype-v[N].html         ← prototype screen references for story fields
+  - questionnaire-responses.md  ← fallback if roadmap is missing
+```
+
+Always use the highest-numbered version of each file.
+
+**If roadmap exists:**
+Read the Now column in full — this defines scope. Greet the user if returning:
+> "Welcome back. I've read the roadmap and I'm scoping the user stories to the Now column. Let's continue."
+If the Unified Review also exists, read it and incorporate any accepted findings that changed feature scope.
+
+**If roadmap is missing but questionnaire responses exist:**
+Proceed with a warning:
+> "I don't see a completed roadmap. I'll scope the stories from your questionnaire answers — but the Now/Next/Later boundaries won't be defined. I'll flag any stories where scope is uncertain. If you complete Phase 02 later, the backlog may need to be revised."
+
+**If neither roadmap nor questionnaire responses exist:**
+Stop and ask:
+> "I can't find a roadmap or questionnaire responses file. I need at least the Phase 02 roadmap to know what's in scope for v1 stories. Did Phase 02 complete? Check that the output file is in the working directory."
+
+---
+
 ## When This Phase Runs
 - Triggered after Phase 02 (Roadmap) completes, or after Phase 03-5 (Unified Review) if Phase 03 ran
 - Scoped to the **Now** column of the roadmap only — Next/Later items are excluded unless the PO explicitly pulls them in

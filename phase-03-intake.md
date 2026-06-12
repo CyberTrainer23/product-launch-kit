@@ -5,6 +5,30 @@
 
 ---
 
+## Resuming After a Pause
+
+Phase 03 intake may run as part of a continuous session or as a return. Before asking any Section E questions, check whether answers have already been captured.
+
+**Check for the following in the working directory:**
+
+```
+  - section-e-responses.md     ← previously captured Section E answers
+  - questionnaire-responses.md ← may contain partial Section E answers from kickoff
+  - Any uploaded documents     ← competitive briefs, SWOTs, win/loss reports
+```
+
+**If `section-e-responses.md` exists:**
+Read it in full. Identify which questions are already answered. Do not re-ask answered questions — only ask for what's missing or needs confirmation:
+> "Welcome back. I can see Section E was partially completed. I have answers for [E1, E2, E5...]. I still need [E3, E8, E11]. Want to continue from where we left off?"
+
+**If only `questionnaire-responses.md` exists:**
+Scan it for any Section E content that may have been captured there. Apply the same pre-fill logic — suggest confirmed answers, flag partial ones, ask only what's missing.
+
+**If neither exists:**
+Proceed with the full Section E interview from the top.
+
+---
+
 ## Opt-in trigger
 
 Before reading this file or asking any Section E questions, confirm the PO's intent:

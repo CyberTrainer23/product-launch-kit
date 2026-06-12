@@ -5,6 +5,47 @@ Generate demo scripts for the product or feature. Three variants are produced: a
 
 ---
 
+## Resuming After a Pause
+
+Phase 07 may run immediately after Phase 06 or as a return session. It draws from more upstream phases than any other — check all of them.
+
+**Check for the following files in the working directory:**
+
+```
+Strongly recommended:
+  - prototype-v[N].html          ← demo screen sequence and UI references
+  - user-stories.html            ← feature narrative for Full Demo sections
+  - marketing-messaging.html     ← positioning frame, elevator pitch, proof points
+  - objection-handling.html      ← in-script objection handling language
+
+Also read if present:
+  - logs/risks-log.md            ← risk flags on demo sections
+  - questionnaire-responses.md   ← Section A for product scope, persona, pain points
+```
+
+Always use the highest-numbered version of each file.
+
+**If all four upstream outputs exist:**
+Read them all before generating. Greet the user if returning:
+> "Welcome back. I've read the prototype, user stories, marketing messaging, and objection handling guide. I'm ready to build all three demo script variants. Let's continue."
+
+**If some upstream outputs are missing:**
+Proceed with what exists, noting each gap:
+
+| Missing file | Impact |
+|---|---|
+| `prototype-v[N].html` | Demo screen sequence must be described from user stories or questionnaire — prototype references will be approximate |
+| `user-stories.html` | Full Demo feature sections built from questionnaire and roadmap instead |
+| `marketing-messaging.html` | Positioning frame and proof points sourced from questionnaire and PDD instead — may not align with finalized messaging |
+| `objection-handling.html` | In-script objection handling generated from questionnaire Section D instead of Phase 06 output — run Phase 06 first for best results |
+
+Notify the user which files were missing and what was used instead.
+
+**If risks log exists:**
+Always read it — demo sections tied to high-risk capabilities need fallback notes.
+
+---
+
 ## When This Phase Runs
 - Triggered after Phase 06 (Objection Handling) completes
 - This is the final phase of the core launch sequence
